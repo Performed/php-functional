@@ -21,4 +21,16 @@ interface Maybe extends
      * @return Maybe
      */
     public function orElse(callable $fn);
+
+
+    /**
+     * @inheritdoc
+     */
+    public function map(callable $transformation): Maybe;
+
+
+    /**
+     * @inheritdoc
+     */
+    public function bind(callable $transformation): Maybe;
 }
