@@ -25,12 +25,14 @@ interface Maybe extends
 
     /**
      * @inheritdoc
+     * @return Maybe
      */
-    public function map(callable $transformation): Maybe;
+    public function map(callable $transformation);
 
 
     /**
      * @inheritdoc
+     * @return Maybe
      */
-    public function bind(callable $transformation): Maybe;
+    public function bind(callable $transformation);
 }

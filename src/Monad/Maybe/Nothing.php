@@ -13,6 +13,7 @@ class Nothing implements Maybe, PatternMatcher
 
     /**
      * @inheritdoc
+     * @return Nothing
      */
     public static function of($value)
     {
@@ -21,22 +22,25 @@ class Nothing implements Maybe, PatternMatcher
 
     /**
      * @inheritdoc
+     * @return Nothing
      */
-    public function ap(FantasyLand\Apply $applicative): FantasyLand\Apply
+    public function ap(FantasyLand\Apply $applicative)
     {
         return $this;
     }
 
     /**
      * @inheritdoc
+     * @return Nothing
      */
-    public function map(callable $transformation): FantasyLand\Functor
+    public function map(callable $transformation)
     {
         return $this;
     }
 
     /**
      * @inheritdoc
+     * @return Nothing
      */
     public function bind(callable $transformation)
     {
@@ -46,13 +50,14 @@ class Nothing implements Maybe, PatternMatcher
     /**
      * @inheritdoc
      */
-    public function concat(FantasyLand\Semigroup $value): FantasyLand\Semigroup
+    public function concat(FantasyLand\Semigroup $value)
     {
         return $value;
     }
 
     /**
      * @inheritdoc
+     * @return Nothing
      */
     public static function mempty()
     {

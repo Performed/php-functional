@@ -16,13 +16,14 @@ class Pure implements MonadFree
     /**
      * @inheritdoc
      */
-    public function ap(FantasyLand\Apply $b): FantasyLand\Apply
+    public function ap(FantasyLand\Apply $b)
     {
         return $b->map($this->value);
     }
 
     /**
      * @inheritdoc
+     * @return Pure
      */
     public function bind(callable $function)
     {
@@ -31,8 +32,9 @@ class Pure implements MonadFree
 
     /**
      * @inheritdoc
+     * @return Pure
      */
-    public function map(callable $function): FantasyLand\Functor
+    public function map(callable $function)
     {
         return self::of($function($this->value));
     }

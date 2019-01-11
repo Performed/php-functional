@@ -18,29 +18,33 @@ class Just implements Maybe, PatternMatcher
     /**
      * @inheritdoc
      */
-    public function ap(FantasyLand\Apply $applicative): FantasyLand\Apply
+    public function ap(FantasyLand\Apply $applicative)
     {
         return $applicative->map($this->value);
     }
 
     /**
      * @inheritdoc
+     * @return Just
      */
-    public function map(callable $transformation): Maybe
+    public function map(callable $transformation)
     {
         return self::of($this->bind($transformation));
     }
 
     /**
      * @inheritdoc
+     * @return Just
      */
-    public function bind(callable $transformation): Maybe
+    public function bind(callable $transformation)
     {
         return $transformation($this->value);
     }
 
     /**
      * @inheritdoc
+     * @return FantasyLand\Semigroup
+     * @throws TypeMismatchError
      */
     public function concat(FantasyLand\Semigroup $value): FantasyLand\Semigroup
     {
@@ -61,6 +65,7 @@ class Just implements Maybe, PatternMatcher
 
     /**
      * @inheritdoc
+     * @return Nothing
      */
     public static function mempty()
     {
@@ -69,6 +74,7 @@ class Just implements Maybe, PatternMatcher
 
     /**
      * @inheritdoc
+     * @return Just
      */
     public function orElse(callable $fn)
     {
