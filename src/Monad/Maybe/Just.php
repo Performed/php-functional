@@ -26,7 +26,7 @@ class Just implements Maybe, PatternMatcher
     /**
      * @inheritdoc
      */
-    public function map(callable $transformation): FantasyLand\Functor
+    public function map(callable $transformation): Maybe
     {
         return self::of($this->bind($transformation));
     }
@@ -34,7 +34,7 @@ class Just implements Maybe, PatternMatcher
     /**
      * @inheritdoc
      */
-    public function bind(callable $transformation)
+    public function bind(callable $transformation): Maybe
     {
         return $transformation($this->value);
     }
