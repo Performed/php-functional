@@ -17,13 +17,14 @@ class Right implements Either
     /**
      * @inheritdoc
      */
-    public function ap(FantasyLand\Apply $b): FantasyLand\Apply
+    public function ap(FantasyLand\Apply $b)
     {
         return $b->map($this->value);
     }
 
     /**
      * @inheritdoc
+     * @return Right
      */
     public function map(callable $transformation): FantasyLand\Functor
     {
@@ -32,6 +33,7 @@ class Right implements Either
 
     /**
      * @inheritdoc
+     * @return Right
      */
     public function bind(callable $transformation)
     {

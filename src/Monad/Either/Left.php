@@ -16,22 +16,25 @@ class Left implements Either
 
     /**
      * @inheritdoc
+     * @return Left
      */
-    public function ap(FantasyLand\Apply $b): FantasyLand\Apply
+    public function ap(FantasyLand\Apply $b)
     {
         return $this;
     }
 
     /**
      * @inheritdoc
+     * @return Left
      */
-    public function map(callable $transformation): FantasyLand\Functor
+    public function map(callable $transformation)
     {
         return $this;
     }
 
     /**
      * @inheritdoc
+     * @return Left
      */
     public function bind(callable $transformation)
     {

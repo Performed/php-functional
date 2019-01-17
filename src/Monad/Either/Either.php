@@ -20,4 +20,18 @@ interface Either extends
      * @return mixed b
      */
     public function either(callable $left, callable $right);
+
+
+    /**
+     * @inheritdoc
+     * @return Either
+     */
+    public function map(callable $transformation);
+
+
+    /**
+     * @inheritdoc
+     * @return Either
+     */
+    public function bind(callable $transformation);
 }
