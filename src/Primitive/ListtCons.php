@@ -47,7 +47,7 @@ class ListtCons implements Listt, \IteratorAggregate
     /**
      * @inheritdoc
      */
-    public function map(callable $transformation): FantasyLand\Functor
+    public function map(callable $transformation)
     {
         return new self(function () use ($transformation) {
             [$head, $tail] = $this->headTail();
@@ -61,7 +61,7 @@ class ListtCons implements Listt, \IteratorAggregate
      *
      * fs <*> xs = [f x | f <- fs, x <- xs]
      */
-    public function ap(FantasyLand\Apply $applicative): FantasyLand\Apply
+    public function ap(FantasyLand\Apply $applicative)
     {
         return $this->reduce(function ($accumulator, $value) use ($applicative) {
             /** @var $applicative self */
@@ -140,7 +140,7 @@ class ListtCons implements Listt, \IteratorAggregate
      *
      * @throws TypeMismatchError
      */
-    public function concat(FantasyLand\Semigroup $value): FantasyLand\Semigroup
+    public function concat(FantasyLand\Semigroup $value)
     {
         if ($value instanceof ListtNil) {
             return $this;

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Widmogrod\Primitive;
 
+use FunctionalPHP\FantasyLand\Chain;
 use Widmogrod\Common;
 use FunctionalPHP\FantasyLand;
 
@@ -35,4 +36,44 @@ interface Listt extends
      * @throws EmptyListError
      */
     public function tail(): self;
+
+
+    /**
+     * @returns Listt
+     */
+    public static function of($value);
+
+    /**
+     * @return Listt
+     */
+    public function map(callable $transformation);
+
+    /**
+     * fs <*> xs = [f x | f <- fs, x <- xs]
+     *
+     * @return Listt
+     */
+    public function ap(FantasyLand\Apply $applicative);
+
+    /**
+     * @return Chain
+     */
+    public function bind(callable $transformation);
+
+    /**
+     * @return array
+     */
+    public function extract();
+
+    /**
+     * @return Listt
+     */
+    public static function mempty();
+
+    /**
+     * @throws TypeMismatchError
+     *
+     * @return Listt
+     */
+    public function concat(FantasyLand\Semigroup $value);
 }
