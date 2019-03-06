@@ -7,6 +7,7 @@ namespace Widmogrod\Primitive;
 use FunctionalPHP\FantasyLand\Chain;
 use Widmogrod\Common;
 use FunctionalPHP\FantasyLand;
+use Widmogrod\Monad\Maybe\Maybe;
 
 /**
  * data List a = Nil | Cons a (List a)
@@ -73,7 +74,27 @@ interface Listt extends
     /**
      * @throws TypeMismatchError
      *
+     * @param FantasyLand\Semigroup $value
+     *
      * @return Listt
      */
     public function concat(FantasyLand\Semigroup $value);
+
+    /**
+     * find :: (a -> Bool) -> [a] -> Maybe a
+     *
+     * @param callable $predicate
+     *
+     * @return Maybe
+     */
+    public function find(callable $predicate): Maybe;
+
+    /**
+     * filter :: (a -> Bool) -> [a] -> [a]
+     *
+     * @param callable $predicate
+     *
+     * @return Listt
+     */
+    public function filter(callable $predicate): Listt;
 }

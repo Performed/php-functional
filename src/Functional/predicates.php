@@ -56,3 +56,42 @@ function orr(callable $predicateA, callable $predicateB = null, $value = null)
         return $a($value) || $b($value);
     })(...func_get_args());
 }
+
+/**
+ * @var callable
+ */
+const is = 'Widmogrod\Functional\is';
+
+/**
+ * is :: Type -> a -> Bool
+ *
+ * @param mixed $expected
+ * @param mixed $value
+ *
+ * @return mixed
+ */
+function is($expected, $value = null)
+{
+    return curryN(2, function ($expected, $value) {
+        return $value instanceof $expected;
+    })(...func_get_args());
+}
+
+/**
+ * @var callable
+ */
+const notEmpty = 'Widmogrod\Functional\notEmpty';
+
+/**
+ * notEmpty :: a -> Bool
+ *
+ * @param mixed $value
+ *
+ * @return mixed
+ */
+function notEmpty($value = null)
+{
+    return curryN(1, function ($value) {
+        return !empty($value);
+    })(...func_get_args());
+}

@@ -7,6 +7,7 @@ namespace Widmogrod\Primitive;
 use Widmogrod\Common;
 use FunctionalPHP\FantasyLand;
 use Widmogrod\Functional as f;
+use Widmogrod\Monad\Maybe\Maybe;
 
 class ListtCons implements Listt, \IteratorAggregate
 {
@@ -190,5 +191,37 @@ class ListtCons implements Listt, \IteratorAggregate
     public function headTail(): array
     {
         return call_user_func($this->next);
+    }
+
+    /**
+     * find :: (a -> Bool) -> [a] -> Maybe a
+     *
+     * @param callable $predicate
+     *
+     * @return Maybe
+     */
+    public function find(callable $predicate): Maybe
+    {
+        return f\find($this, $predicate);
+    }
+
+    /**
+     * filter :: (a -> Bool) -> [a] -> [a]
+     *
+     * @param callable $predicate
+     *
+     * @return Listt
+     */
+    public function filter(callable $predicate): Listt
+    {
+        $aggregate = [];
+        foreach ($this as $item)
+        {
+            if ($predicate($item))
+            {
+                $aggregate[] = $item;
+            }
+        }
+        return f\fromIterable($aggregate);
     }
 }

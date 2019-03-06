@@ -10,6 +10,9 @@ use FunctionalPHP\FantasyLand\Foldable;
 use FunctionalPHP\FantasyLand\Functor;
 use FunctionalPHP\FantasyLand\Monad;
 use FunctionalPHP\FantasyLand\Traversable;
+use function Widmogrod\Monad\Maybe\just;
+use Widmogrod\Monad\Maybe\Maybe;
+use function Widmogrod\Monad\Maybe\nothing;
 use Widmogrod\Primitive\Listt;
 use Widmogrod\Primitive\ListtCons;
 
@@ -581,4 +584,29 @@ function foldM(callable $f, $z0 = null, Foldable $xs = null)
             ? fromNil()
             : $result;
     })(...func_get_args());
+}
+
+/**
+ * @var callable
+ */
+const find = 'Widmogrod\Functional\find';
+
+/**
+ * find :: (a -> Bool) -> [a] -> Maybe a
+ *
+ * @param Listt $f
+ * @param callable $predicate
+ *
+ * @return Maybe
+ */
+function find(Listt $f, callable $predicate): Maybe
+{
+    foreach ($f as $item)
+    {
+        if ($predicate($item))
+        {
+            return just($item);
+        }
+    }
+    return nothing();
 }

@@ -6,6 +6,8 @@ namespace Widmogrod\Primitive;
 
 use FunctionalPHP\FantasyLand;
 use Widmogrod\Common;
+use Widmogrod\Monad\Maybe\Maybe;
+use function Widmogrod\Monad\Maybe\nothing;
 
 class ListtNil implements Listt, \IteratorAggregate
 {
@@ -130,5 +132,29 @@ class ListtNil implements Listt, \IteratorAggregate
     public function getIterator()
     {
         return new \ArrayObject();
+    }
+
+    /**
+     * find :: (a -> Bool) -> [a] -> Maybe a
+     *
+     * @param callable $predicate
+     *
+     * @return Maybe
+     */
+    public function find(callable $predicate): Maybe
+    {
+        return nothing();
+    }
+
+    /**
+     * filter :: (a -> Bool) -> [a] -> [a]
+     *
+     * @param callable $predicate
+     *
+     * @return Listt
+     */
+    public function filter(callable $predicate): Listt
+    {
+        return $this;
     }
 }
