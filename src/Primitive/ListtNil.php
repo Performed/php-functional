@@ -157,4 +157,12 @@ class ListtNil implements Listt, \IteratorAggregate
     {
         return $this;
     }
+
+    /**
+     * @\JMS\Serializer\Annotation\HandlerCallback("json", direction = "serialization")
+     */
+    public function serializeToJson($visitor, $data, $context)
+    {
+        $visitor->visitArray([], ['name' => 'array', 'params' => []], $context);
+    }
 }
