@@ -202,7 +202,7 @@ class ListtCons implements Listt, \IteratorAggregate
      */
     public function find(callable $predicate): Maybe
     {
-        return f\find($this, $predicate);
+        return f\find($predicate, $this);
     }
 
     /**
@@ -223,5 +223,13 @@ class ListtCons implements Listt, \IteratorAggregate
             }
         }
         return f\fromIterable($aggregate);
+    }
+
+    /**
+     * @HandlerCallback("json", direction = "serialization")
+     */
+    public function serializeToJson($visitor, $data, $context)
+    {
+        $visitor->visitArray($this->extract(), ['name' => 'array', 'params' => []], $context);
     }
 }

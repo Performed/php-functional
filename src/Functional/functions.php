@@ -594,14 +594,14 @@ const find = 'Widmogrod\Functional\find';
 /**
  * find :: (a -> Bool) -> [a] -> Maybe a
  *
- * @param Listt $f
  * @param callable $predicate
+ * @param Listt $list
  *
  * @return Maybe
  */
-function find(Listt $f, callable $predicate): Maybe
+function find(callable $predicate, Listt $list): Maybe
 {
-    foreach ($f as $item)
+    foreach ($list as $item)
     {
         if ($predicate($item))
         {
