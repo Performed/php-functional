@@ -226,7 +226,7 @@ class ListtCons implements Listt, \IteratorAggregate
     }
 
     /**
-     * @HandlerCallback("json", direction = "serialization")
+     * @\JMS\Serializer\Annotation\HandlerCallback("json", direction = "serialization")
      */
     public function serializeToJson($visitor, $data, $context)
     {
