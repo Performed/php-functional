@@ -7,6 +7,7 @@ namespace Widmogrod\Functional;
 use FunctionalPHP\FantasyLand\Foldable;
 use Widmogrod\Primitive\Listt;
 use Widmogrod\Primitive\ListtCons;
+use Widmogrod\Primitive\ListtNil;
 use Widmogrod\Useful\SnapshotIterator;
 
 /**
@@ -225,4 +226,49 @@ function length(Foldable $t): int
     return $t->reduce(function ($len) {
         return $len + 1;
     }, 0);
+}
+
+/**
+ * @var callable
+ */
+const any = 'Widmogrod\Functional\any';
+
+/**
+ * any :: Listt t => t a -> Bool
+ *
+ * @param callable $predicate
+ * @param Listt $t
+ * @return bool
+ */
+function any(callable $predicate, Listt $t = null): bool
+{
+    return curryN(2, function (callable $predicate, Listt $t) {
+        if ($t instanceof ListtNil) {
+            return false;
+        }
+        foreach ($t as $item)
+        {
+            if ($predicate($item)) {
+                return true;
+            }
+        }
+        return false;
+    })(...func_get_args());
+}
+
+/**
+ * @var callable
+ */
+const all = 'Widmogrod\Functional\all';
+
+/**
+ * any :: Listt t => t a -> Bool
+ *
+ * @param callable $predicate
+ * @param Listt $t
+ * @return bool
+ */
+function all(callable $predicate, Listt $t = null): bool
+{
+    return eql(false, any(not($predicate), $t));
 }

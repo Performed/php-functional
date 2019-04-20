@@ -101,7 +101,6 @@ class ListtCons implements Listt, \IteratorAggregate
         foreach ($this as $item) {
             $accumulator = $function($accumulator, $item);
         }
-
         return $accumulator;
     }
 

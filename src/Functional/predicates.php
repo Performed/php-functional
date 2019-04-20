@@ -95,3 +95,23 @@ function notEmpty($value = null)
         return !empty($value);
     })(...func_get_args());
 }
+
+
+/**
+ * @var callable
+ */
+const not = 'Widmogrod\Functional\not';
+
+/**
+ * not :: (a -> Bool) -> a -> Bool
+ *
+ * @param $predicate
+ * @param mixed $x
+ *
+ * @return mixed
+ */
+function not($predicate, $x = null) {
+    return curryN(2, function ($predicate, $x) {
+        return !$predicate($x);
+    })(...func_get_args());
+}
