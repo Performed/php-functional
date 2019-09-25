@@ -47,4 +47,15 @@ class Right implements Either
     {
         return $right($this->value);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function ensure(callable $predicate, $default)
+    {
+        return ($predicate($this->value))
+            ?  $this
+            : Left::of($default);
+    }
+
 }

@@ -49,4 +49,14 @@ class Left implements Either
     {
         return $left($this->value);
     }
+
+    /**
+     * @inheritdoc
+     * @return Left
+     */
+    public function ensure(callable $predicate, $default)
+    {
+        return $this;
+    }
+
 }

@@ -75,6 +75,22 @@ class Nothing implements Maybe, PatternMatcher
     /**
      * @inheritdoc
      */
+    public function extractOrElse($default)
+    {
+        return $default;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function extractOrCall(callable $fnDefault)
+    {
+        return $fnDefault();
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function extract()
     {
         return null;

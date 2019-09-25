@@ -34,4 +34,12 @@ interface Either extends
      * @return Either
      */
     public function bind(callable $transformation);
+
+    /**
+     * @param callable $predicate
+     * @param $default
+     * @return Either $this if $this is Right and $predicate($value) else Left::of($default)
+     */
+    public function ensure(callable $predicate, $default);
+
 }

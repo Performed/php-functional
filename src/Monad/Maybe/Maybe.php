@@ -22,6 +22,19 @@ interface Maybe extends
      */
     public function orElse(callable $fn);
 
+    /**
+     * @param mixed $default .
+     * @return mixed $value if $this is Just($value) else $default.
+     */
+    public function extractOrElse($default);
+
+    /**
+     * Extract value from Just or get lazy default value if Nothing.
+     *
+     * @param callable $fnDefault .
+     * @return mixed $value if $this is Just($value) else $fnDefault().
+     */
+    public function extractOrCall(callable $fnDefault);
 
     /**
      * @inheritdoc

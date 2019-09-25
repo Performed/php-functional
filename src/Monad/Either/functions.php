@@ -69,6 +69,76 @@ function either(callable $left, callable $right = null, Either $either = null)
     })(...func_get_args());
 }
 
+const eitherNull = 'Widmogrod\Monad\Either\eitherNull';
+
+/**
+ * eitherNull :: a -> b -> Either a b
+ *
+ * @param mixed|null $value
+ * @param mixed $default
+ * @return Either Right::of($value) if $value !== null else Left::of($default)
+ */
+function eitherNull($value, $default)
+{
+    return ensure(
+        Right::of($value),
+        function($value) { return $value !== null; },
+        $default
+    );
+}
+
+const eitherEmpty = 'Widmogrod\Monad\Either\eitherEmpty';
+
+/**
+ * eitherEmpty :: a -> b -> Either a b
+ *
+ * Return Left::of($default) if $value is empty($value)
+ *
+ * @param mixed $value
+ * @param mixed $default
+ * @return Either Right::of($value) if $value is !empty($value) else Left::of($default)
+ */
+function eitherEmpty($value, $default)
+{
+    return ensure(
+        Right::of($value),
+        function($value) { return !empty($value); },
+        $default
+    );
+}
+
+const eitherNothing = 'Widmogrod\Monad\Either\eitherNothing';
+
+/**
+ * eitherNothing :: Maybe a -> b -> Either a b
+ *
+ * @param Maybe\Maybe $value
+ * @param $default
+ *
+ * @return Either Right::of($value->extract()) if $value is Some(_) else Left::of($default)
+ */
+function eitherNothing(Maybe\Maybe $value, $default)
+{
+    return $value
+        ->map(Right::of)
+        ->extractOrElse(Left::of($default));
+}
+
+const ensure = 'Widmogrod\Monad\Either\ensure';
+
+/**
+ * Either a b -> (b -> bool) -> a -> Either a b
+ *
+ * @param Either $e
+ * @param callable $predicate .
+ * @param $default .
+ * @return Either .
+ */
+function ensure(Either $e, callable $predicate, $default)
+{
+    return $e->ensure($predicate, $default);
+}
+
 const doubleMap = 'Widmogrod\Monad\Either\doubleMap';
 
 /**

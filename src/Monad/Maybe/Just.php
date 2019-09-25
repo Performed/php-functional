@@ -82,6 +82,28 @@ class Just implements Maybe, PatternMatcher
     }
 
     /**
+     * Extract value from Just or get default value if Nothing.
+     *
+     * @param mixed $default .
+     * @return mixed
+     */
+    public function extractOrElse($default)
+    {
+        return $this->extract();
+    }
+
+    /**
+     * Extract value from Just or get lazy default value if Nothing.
+     *
+     * @param callable $fnDefault .
+     * @return mixed
+     */
+    public function extractOrCall(callable $fnDefault)
+    {
+        return $this->extract();
+    }
+
+    /**
      * @inheritdoc
      */
     public function extract()
