@@ -59,4 +59,10 @@ class Left implements Either
         return $this;
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function foreach(callable $sideEffectF): void
+    { }
+
 }

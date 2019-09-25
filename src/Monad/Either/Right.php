@@ -58,4 +58,12 @@ class Right implements Either
             : Left::of($default);
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function foreach(callable $sideEffectF): void
+    {
+        $sideEffectF($this->value);
+    }
+
 }
