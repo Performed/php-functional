@@ -114,4 +114,29 @@ class Nothing implements Maybe, PatternMatcher
     {
         return $fn();
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function isDefined(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function nonEmpty(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function isEmpty(): bool
+    {
+        return true;
+    }
+
 }

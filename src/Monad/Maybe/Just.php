@@ -129,4 +129,29 @@ class Just implements Maybe, PatternMatcher
     {
         return $fn($this->value);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function isDefined(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function nonEmpty(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function isEmpty(): bool
+    {
+        return false;
+    }
+
 }

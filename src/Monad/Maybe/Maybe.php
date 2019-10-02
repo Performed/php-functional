@@ -48,4 +48,20 @@ interface Maybe extends
      * @return Maybe
      */
     public function bind(callable $transformation);
+
+    /**
+     * @return bool True if it is Just.
+     */
+    public function isDefined(): bool;
+
+    /**
+     * @return bool True if it is Just.
+     */
+    public function nonEmpty(): bool;
+
+    /**
+     * @return bool True if it is Nothing.
+     */
+    public function isEmpty(): bool;
+
 }
