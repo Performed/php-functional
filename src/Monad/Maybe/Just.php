@@ -24,6 +24,14 @@ class Just implements Maybe, PatternMatcher
     }
 
     /**
+     * @param callable $sideEffect .
+     */
+    public function foreach(callable $sideEffect)
+    {
+        $sideEffect();
+    }
+
+    /**
      * @inheritdoc
      * @return Just
      */

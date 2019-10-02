@@ -37,6 +37,14 @@ interface Maybe extends
     public function extractOrCall(callable $fnDefault);
 
     /**
+     * Execute side effect if Just.
+     *
+     * @param callable $sideEffect .
+     * @return void
+     */
+    public function foreach(callable $sideEffect);
+
+    /**
      * @inheritdoc
      * @return Maybe
      */

@@ -30,6 +30,14 @@ class Nothing implements Maybe, PatternMatcher
     }
 
     /**
+     * @param callable $sideEffect .
+     */
+    public function foreach(callable $sideEffect)
+    {
+        return;
+    }
+
+    /**
      * @inheritdoc
      * @return Nothing
      */
