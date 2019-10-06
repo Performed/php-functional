@@ -65,4 +65,12 @@ class Left implements Either
     public function foreach(callable $sideEffectF): void
     { }
 
+    /**
+     * @inheritdoc
+     */
+    public function foreachLeft(callable $sideEffectF): void
+    {
+        $sideEffectF($this->value);
+    }
+
 }

@@ -66,4 +66,10 @@ class Right implements Either
         $sideEffectF($this->value);
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function foreachLeft(callable $sideEffectF): void
+    { }
+
 }

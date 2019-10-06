@@ -43,9 +43,19 @@ interface Either extends
     public function ensure(callable $predicate, $default);
 
     /**
+     * Executes the given side-effecting function if this is a Right.
+     *
      * @param callable $sideEffectF
-     * @return void Executes the given side-effecting function if this is a Right
+     * @return void .
      */
     public function foreach(callable $sideEffectF): void;
+
+    /**
+     * Executes the given side-effecting function if this is a Left.
+     *
+     * @param callable $sideEffectF .
+     * @return void .
+     */
+    public function foreachLeft(callable $sideEffectF): void;
 
 }
