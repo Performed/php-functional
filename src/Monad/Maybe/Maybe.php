@@ -72,4 +72,10 @@ interface Maybe extends
      */
     public function isEmpty(): bool;
 
+    /**
+     * @param callable $filterF .
+     * @return Maybe .
+     */
+    public function filter(callable $filterF): Maybe;
+
 }

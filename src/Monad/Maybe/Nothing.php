@@ -147,4 +147,12 @@ class Nothing implements Maybe, PatternMatcher
         return true;
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function filter(callable $filterF): Maybe
+    {
+        return $this;
+    }
+
 }

@@ -162,4 +162,14 @@ class Just implements Maybe, PatternMatcher
         return false;
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function filter(callable $filterF): Maybe
+    {
+        return ($filterF($this->value))
+            ? $this
+            : nothing();
+    }
+
 }
