@@ -28,7 +28,7 @@ class Just implements Maybe, PatternMatcher
      */
     public function foreach(callable $sideEffect)
     {
-        $sideEffect();
+        $sideEffect($this->value);
     }
 
     /**
