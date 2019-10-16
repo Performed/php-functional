@@ -83,6 +83,14 @@ class Nothing implements Maybe, PatternMatcher
     /**
      * @inheritdoc
      */
+    public function orElseStrict(Maybe $other)
+    {
+        return $other;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function extractOrElse($default)
     {
         return $default;

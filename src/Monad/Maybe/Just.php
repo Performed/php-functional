@@ -90,6 +90,15 @@ class Just implements Maybe, PatternMatcher
     }
 
     /**
+     * @inheritdoc
+     * @return Just
+     */
+    public function orElseStrict(Maybe $other)
+    {
+        return $this;
+    }
+
+    /**
      * Extract value from Just or get default value if Nothing.
      *
      * @param mixed $default .

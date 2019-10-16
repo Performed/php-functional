@@ -23,6 +23,12 @@ interface Maybe extends
     public function orElse(callable $fn);
 
     /**
+     * @param Maybe $other .
+     * @return Maybe .
+     */
+    public function orElseStrict(Maybe $other);
+
+    /**
      * @param mixed $default .
      * @return mixed $value if $this is Just($value) else $default.
      */
@@ -49,7 +55,6 @@ interface Maybe extends
      * @return Maybe
      */
     public function map(callable $transformation);
-
 
     /**
      * @inheritdoc
