@@ -73,4 +73,15 @@ class Left implements Either
         $sideEffectF($this->value);
     }
 
+    /**
+     * Handle situation when this is Left
+     *
+     * @param callable $fn
+     *
+     * @return Either
+     */
+    public function orElse(callable $fn)
+    {
+        return $fn();
+    }
 }
