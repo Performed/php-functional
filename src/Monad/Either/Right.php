@@ -72,4 +72,15 @@ class Right implements Either
     public function foreachLeft(callable $sideEffectF): void
     { }
 
+    /**
+     * Handle situation when this is Left
+     *
+     * @param callable $fn
+     *
+     * @return Either
+     */
+    public function orElse(callable $fn)
+    {
+        return $this;
+    }
 }
