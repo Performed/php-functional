@@ -100,3 +100,23 @@ function fromMaybe($default = null, Maybe $maybe = null)
         return maybe($default, f\identity, $maybe);
     })(...func_get_args());
 }
+
+/**
+ * @var callable
+ */
+const filter = 'Widmogrod\Monad\Maybe\filter';
+
+/**
+ * Apply filter on maybe monad
+ *
+ * fromMaybe :: (a -> bool) -> Maybe a -> Maybe a
+ *
+ * @param callable $filterF
+ * @param Maybe $maybe
+ *
+ * @return Maybe
+ */
+function filter(callable $filterF, Maybe $maybe)
+{
+    return $maybe->filter($filterF);
+}
