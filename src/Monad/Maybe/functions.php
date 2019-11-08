@@ -114,9 +114,11 @@ const filter = 'Widmogrod\Monad\Maybe\filter';
  * @param callable $filterF
  * @param Maybe $maybe
  *
- * @return Maybe
+ * @return Maybe|callable
  */
-function filter(callable $filterF, Maybe $maybe)
+function filter(callable $filterF = null, Maybe $maybe = null)
 {
-    return $maybe->filter($filterF);
+    return f\curryN(2, function (callable $filterF, Maybe $maybe) {
+        return $maybe->filter($filterF);
+    })(...func_get_args());
 }
