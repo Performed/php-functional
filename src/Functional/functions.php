@@ -610,3 +610,15 @@ function find(callable $predicate, Listt $list): Maybe
     }
     return nothing();
 }
+
+/** @var callable */
+const lazy = 'Widmogrod\Functional\lazy';
+
+/**
+ * @param callable $f
+ * @param mixed ...$args
+ * @return \Closure
+ */
+function lazy(callable $f, ...$args) {
+    return function () use ($f, $args) { return $f(...$args); };
+};
