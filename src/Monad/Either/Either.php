@@ -66,4 +66,11 @@ interface Either extends
      * @return Either
      */
     public function orElse(callable $fn);
+
+    /**
+     * @param callable $filterF  (a -> Bool)
+     * @param mixed $default b
+     * @return Either Either a b
+     */
+    public function filter(callable $filterF, $default): Either;
 }

@@ -232,3 +232,26 @@ function fromRight($a, Either $either = null)
         return either(f\constt($a), f\identity, $either);
     })(...func_get_args());
 }
+
+/**
+ * @var callable
+ */
+const filter = 'Widmogrod\Monad\Either\filter';
+
+/**
+ * Apply filter on either monad
+ *
+ * filter :: (a -> bool) -> b -> Either a b -> Either a b
+ *
+ * @param callable $filterF
+ * @param $default
+ * @param Either $either
+ *
+ * @return Either|callable
+ */
+function filter(callable $filterF = null, $default = null, Either $either = null)
+{
+    return f\curryN(3, function (callable $filterF, $default, Either $either) {
+        return $either->filter($filterF, $default);
+    })(...func_get_args());
+}

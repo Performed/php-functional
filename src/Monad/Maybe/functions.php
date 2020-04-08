@@ -109,7 +109,7 @@ const filter = 'Widmogrod\Monad\Maybe\filter';
 /**
  * Apply filter on maybe monad
  *
- * fromMaybe :: (a -> bool) -> Maybe a -> Maybe a
+ * filter :: (a -> bool) -> Maybe a -> Maybe a
  *
  * @param callable $filterF
  * @param Maybe $maybe

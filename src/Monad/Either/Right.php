@@ -83,4 +83,14 @@ class Right implements Either
     {
         return $this;
     }
+
+    /**
+     * @param callable $filterF (a -> Bool)
+     * @param mixed $default b
+     * @return Either Either a b
+     */
+    public function filter(callable $filterF, $default): Either
+    {
+        return $this;
+    }
 }
