@@ -84,16 +84,4 @@ class Left implements Either
     {
         return $fn();
     }
-
-    /**
-     * @param callable $filterF (a -> Bool)
-     * @param mixed $default b
-     * @return Either Either a b
-     */
-    public function filter(callable $filterF, $default): Either
-    {
-        return ($filterF($this->value))
-            ? $this
-            : right($default);
-    }
 }
